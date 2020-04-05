@@ -1,0 +1,31 @@
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: arun-vol
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 15Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/arun-vol"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  volumeName: arun-vol
+  resources:
+    requests:
+      storage: 10Gi
+---
+
+
+
